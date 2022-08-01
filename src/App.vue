@@ -1,28 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <barra-nav/>
+    <router-link to="/login">Login</router-link>
+    <router-link to="/register">Register</router-link>
+    <router-link to="/main">Main</router-link>
+    <router-link to="/admin">Admin</router-link>
+    <a @click="desloguear">Desloguear</a>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import BarraNav from './components/BarraNav.vue';
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: "App",
+  components: {BarraNav },
+  data() {
+    return {
+    };
+  },
+  methods: {
+    desloguear(){
+      localStorage.clear()
+      this.$router.push('login')
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
+
 </style>
