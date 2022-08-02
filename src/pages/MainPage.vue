@@ -1,32 +1,66 @@
 <template>
-  <div class="hello">
-   hola
+     <div>
+    <div v-for="(item, index) in products" :key="index">
+      <div class="productos">
+        <div class="card" style="width: 18rem">
+          <h5 class="card-title text-center">{{ item.titulo }}</h5>
+          <img class="img-card" :src="item.imagen" alt="" />
+          <!-- <img :src="getImgUrl()" class="card-img-top d-block w-50" :alt="titulo"> -->
+          <div class="card-body">
+            <p class="card-text">${{ item.precio }}</p>
+            <button  @click="agregarAlCarrito(item.id)" class="btn btn-success text-center">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: 'MainPage',
-  props: {
-    msg: String
-  }
+  data() {
+    return {
+      products: [],
+      
+    };
+  },
+
+    methods: {
+       agregarAlCarrito(payload){
+      this.$router.push({ name: "carrito", params: { id: payload } });
+      },
+   
+  },
+  async mounted() {
+  
+    let resp = await axios.get(
+      "https://62e1c00cfa99731d75dbab30.mockapi.io/api/products"
+    );
+
+    this.products = resp.data;
+  },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.productos {
+  text-align: center;
+  padding: 15px;
+  margin: auto;
+  margin-top: 40px;
+  margin-right: 30px;
+  border-radius: 10px;
+  box-shadow: 1px 4px 10px 0 brown;
+  float: right;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+.img-card {
+  width: 150px;
+  height: 150px;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.product {
+  margin: 75px;
 }
 </style>

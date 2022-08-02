@@ -25,7 +25,7 @@
       ></b-form-input>
     </b-input-group>
 
-    <b-button @click="createUser" variant="primary">Login</b-button>
+    <b-button @click="createUser" variant="primary">Register</b-button>
   </b-form>
 </template>
 <script>

@@ -1,12 +1,16 @@
-ines (17 sloc)  380 Bytes
+ines (17 sloc) 380 Bytes
 
 <template>
   <div>
     <b-nav tabs fill>
-      <b-nav-item>Inicio</b-nav-item>
-      <b-nav-item>Productos</b-nav-item>
-      <b-nav-item>Nosotros </b-nav-item>
-      <b-nav-item>Contacto</b-nav-item>
+      <b-nav-item>
+        <router-link to="/login">Login</router-link>
+      </b-nav-item>
+      <b-nav-item
+        ><router-link to="/register">Register</router-link></b-nav-item
+      >
+      <b-nav-item><router-link to="/main">main</router-link> </b-nav-item>
+      <b-nav-item> </b-nav-item>
 
       <button class="btn btn-outline-dark">Carrito</button>
     </b-nav>

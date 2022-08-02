@@ -33,6 +33,13 @@ export default new VueRouter({
             component: () => import('./pages/AdminPage'),
             props: true
         },
+
+        {
+            path: '/admin/:id',
+            name: 'editar',
+            component: () => import('./pages/Editar'),
+            props: true
+        },
      
         // {
         //     path: '/usuarios/:valor?',

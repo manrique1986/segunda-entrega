@@ -5,7 +5,7 @@
         <div class="card" style="width: 18rem">
           <h5 class="card-title text-center">{{ item.titulo }}</h5>
           <img class="img-card" :src="item.imagen" alt="" />
-          <!-- <img :src="getImgUrl()" class="card-img-top d-block w-50" :alt="titulo"> -->
+           <td> <p class='btn btn-warning' @click="editarProducto(item.id)" >Editar</p></td>
           <div class="card-body">
             <p class="card-text">${{ item.precio }}</p>
             <button class="btn btn-success text-center">Agregar</button>

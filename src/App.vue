@@ -1,11 +1,7 @@
 <template>
   <div id="app">
     <barra-nav/>
-    <router-link to="/login">Login</router-link>
-    <router-link to="/register">Register</router-link>
-    <router-link to="/main"></router-link>
-    <router-link to="/admin">Admin</router-link>
-    <a @click="desloguear">Desloguear</a>
+    <b-button class="button" @click="desloguear" variant="warning">Desloguear</b-button>
     <router-view></router-view>
   </div>
 </template>
@@ -28,7 +24,15 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
+.button{
+
+
+  margin: 0%;
+  position: absolute;
+
+}
 
 
 </style>
