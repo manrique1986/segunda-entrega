@@ -3,7 +3,7 @@
     <barra-nav/>
     <router-link to="/login">Login</router-link>
     <router-link to="/register">Register</router-link>
-    <router-link to="/main">Main</router-link>
+    <router-link to="/main"></router-link>
     <router-link to="/admin">Admin</router-link>
     <a @click="desloguear">Desloguear</a>
     <router-view></router-view>

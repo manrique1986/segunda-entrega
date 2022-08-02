@@ -16,10 +16,10 @@
         placeholder="password"
       ></b-form-input>
     </b-input-group>
-    <label class="sr-only" for="inline-form-input-username">Mail</label>
+    <label class="sr-only" for="inline-form-input-username">email</label>
     <b-input-group class="mb-2 mr-sm-2 mb-sm-0">
       <b-form-input
-        v-model="mail"
+        v-model="email"
         id="inline-form-input-username"
         placeholder="mail"
       ></b-form-input>
@@ -36,15 +36,15 @@ export default {
     return {
       usuario: "",
       password: "",
-      mail: "",
+      email: "",
     };
   },
   methods: {
     async createUser() {
       const newUser = {
-        name: this.usuario,
+        usuario: this.usuario,
         password: this.password,
-        email: this.mail,
+        email: this.email,
         isAdmin: false,
       };
       let resp = await axios.post(

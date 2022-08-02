@@ -39,7 +39,7 @@ export default {
     validarLogin() {
     
       let data = this.usuarios.find(
-        (o) => o.mail === this.usuario && o.password === this.password
+        (o) => o.usuario === this.usuario && o.password === this.password
       );
       localStorage.clear();
       if (data) {
@@ -58,6 +58,7 @@ export default {
     let resp = await axios.get(
       "https://62e1c00cfa99731d75dbab30.mockapi.io/api/usuarios"
     );
+    console.log(resp);
     this.usuarios = resp.data;
   },
 };

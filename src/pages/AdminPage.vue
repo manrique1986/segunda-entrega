@@ -1,18 +1,18 @@
 <template>
   <div>
-    <h1>ERES ADMIN</h1>
-
-    <table>
-      <tr
-        v-for="(item, index) in products"
-        :key="index"
-      >
-        <td>{{ item.titulo }}</td>
-        <td>{{ item.precio }}</td>
-        <td>{{ item.detail }}</td>
-        <td @click="editarProducto(item.id)">Editar</td>
-      </tr>
-    </table>
+    <div v-for="(item, index) in products" :key="index">
+      <div class="productos">
+        <div class="card" style="width: 18rem">
+          <h5 class="card-title text-center">{{ item.titulo }}</h5>
+          <img class="img-card" :src="item.imagen" alt="" />
+          <!-- <img :src="getImgUrl()" class="card-img-top d-block w-50" :alt="titulo"> -->
+          <div class="card-body">
+            <p class="card-text">${{ item.precio }}</p>
+            <button class="btn btn-success text-center">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -27,24 +27,22 @@ export default {
   },
   methods: {
     editarProducto(payload) {
-      /*eslint-disable*/
-      debugger
       this.$router.push({ name: "editar", params: { id: payload } });
     },
   },
   async mounted() {
-    
-    let isLogged = localStorage.getItem("isLogged");
-    let isAdmin = localStorage.getItem("isAdmin");
-    if (isLogged != "true") {
-      this.$router.push("/login");
-    }
-    if (isAdmin != "true") {
-      this.$router.push("/main");
-    }
+    // let isLogged = localStorage.getItem("isLogged");
+    // let isAdmin = localStorage.getItem("isAdmin");
+    // if (isLogged != "true") {
+    //   this.$router.push("/login");
+    // }
+    // if (isAdmin != "true") {
+    //   this.$router.push("/main");
+    // }
     let resp = await axios.get(
       "https://62e1c00cfa99731d75dbab30.mockapi.io/api/products"
     );
+
     this.products = resp.data;
   },
 };
@@ -52,18 +50,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+.productos {
+  text-align: center;
+  padding: 15px;
+  margin: auto;
+  margin-top: 40px;
+  margin-right: 30px;
+  border-radius: 10px;
+  box-shadow: 1px 4px 10px 0 brown;
+  float: right;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+.img-card {
+  width: 150px;
+  height: 150px;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.product {
+  margin: 75px;
 }
 </style>
